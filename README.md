@@ -1,6 +1,8 @@
 # demo
 
 A new Flutter project.
+漫画阅读Android app。
+软件项目开发实训作业。
 
 ## Getting Started
 
