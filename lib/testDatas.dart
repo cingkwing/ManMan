@@ -182,3 +182,11 @@ List<Map> forRecord = [
   {'content': '通过 微信支付 充值了100漫币！', 'time': '5小时 前'},
   {'content': '开启了在漫漫的漫画探索之旅!!!', 'time': '6天 前'}
 ];
+
+// for debug 属性页所需测试数据
+List<Map> forAttrs = [
+  {'title': '昵称', 'value': '宋强'},
+  {'title': '签名', 'value': '这是一条无聊得很的签名'},
+  {'title': '性别', 'value': '男'},
+  {'title': '年龄', 'value': '18'}
+];

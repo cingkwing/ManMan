@@ -19,6 +19,16 @@ class _ShelfList extends State<ShelfList>{
   _ShelfList(this.lastReading, this.comics);
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context){
     return PageView.builder(
       scrollDirection: Axis.horizontal,

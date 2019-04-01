@@ -1,11 +1,35 @@
 import 'package:flutter/material.dart';
 import 'unify.dart';
-// import 'util/recommendBanner.dart';
-// import 'util/searchBar.dart';
+import 'util/recommendBanner.dart';
+import 'util/searchBar.dart';
 import 'util/rankList.dart';
-import 'testDatas.dart';
 
-class DiscoverPage extends StatelessWidget{
+
+class DiscoverPage extends StatefulWidget{
+  @override
+  _DiscoverPage createState()=>_DiscoverPage();
+}
+class _DiscoverPage extends State<DiscoverPage>{
+
+  ScrollController _controller = new ScrollController();
+  RankList rankList = new RankList();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener((){
+      if(_controller.position.pixels==_controller.position.maxScrollExtent){
+        setState(() {
+         rankList.addItem(); 
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context){
@@ -44,17 +68,17 @@ class DiscoverPage extends StatelessWidget{
       ),
       
       body: SingleChildScrollView(
+        controller: _controller,
         child: Container(
           width: Unify.px(480),
-          // height: Unify.px(1500),
           padding: EdgeInsets.all(Unify.px(5)),
           child: Column(
             children: <Widget>[
-              // SearchBar(),
-              // RecommendBanner(forBanners),
-              RankList(),
+              SearchBar(),
+              RecommendBanner(),
+              rankList,
             ],
-          ),
+          )
         ),
       ),
 

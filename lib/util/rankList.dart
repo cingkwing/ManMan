@@ -4,28 +4,29 @@ import 'dart:async';
 import 'dart:math';
 import 'package:demo/unify.dart';
 import 'package:demo/testDatas.dart';
-import 'searchBar.dart';
-import 'recommendBanner.dart';
 
 // 排行推荐列表
 class RankList extends StatefulWidget{
-  @override
-  _RankList createState()=>_RankList();
-}
-class _RankList extends State<RankList>{
+  static var  _theState;
 
-  List<Widget> visibleItems = [RankListItem(forRankList[0]['title'], forRankList[0]['comic'])];
-  ScrollController _controller = new ScrollController();
+  void addItem()=>_theState.addItem();
+
+  @override
+  _RankListState createState(){
+    _theState = _RankListState();
+    return _theState;
+  }
+}
+class _RankListState extends State<RankList>{
+
+  List<Widget> visibleItems = [];
+  // List<Widget> visibleItems = [RankListItem(forRankList[0]['title'], forRankList[0]['comic'])];
   bool isResquesting = false;
 
   @override
   void initState() {
     super.initState();
-    _controller.addListener((){
-      if(_controller.position.pixels==_controller.position.maxScrollExtent){
-        addItem();
-      }
-    });
+    addItem();
   }
 
   @override
@@ -33,9 +34,9 @@ class _RankList extends State<RankList>{
     super.dispose();
   }
 
-  Widget _loader(){
+  Widget _loader(size){
     return Container(
-      height: Unify.px(70),
+      height: Unify.px(size),
       child: Opacity(
         opacity: isResquesting?1.0:0.0,
         child: SpinKitWave(
@@ -50,7 +51,7 @@ class _RankList extends State<RankList>{
     );
   }
 
-  addItem() async{
+  void addItem() async{
     if(!isResquesting){
       setState(()=>isResquesting = true);
       Map newItem = await _fakeRequest();
@@ -71,25 +72,20 @@ class _RankList extends State<RankList>{
   Widget build(BuildContext context){
     return Container(
       margin: EdgeInsets.only(left: Unify.px(10)),
-      height: Unify.px(900),
+      height: Unify.px(visibleItems.length*300+70),
       child: ListView.builder(
-        controller: _controller,
-        itemCount: visibleItems.length+3,
+        physics: NeverScrollableScrollPhysics(),
+        itemCount: visibleItems.length+1,
         itemBuilder: (context, index){
-          if(index!=visibleItems.length+2){
-              switch(index){
-              case 0: return SearchBar(); break;
-              case 1: return RecommendBanner(forBanners); break;
-              default: return visibleItems[index-2]; break;
-            }
+          if(index<visibleItems.length){
+              return visibleItems[index];
           } else{
-            return _loader();
+            return _loader(70);
           }
         },
       ),
     );
   }
-  // SpinKitWave(size: 30,itemBuilder: (context, i)=>DecoratedBox(decoration: BoxDecoration(color: i.isEven?Colors.transparent:Colors.black,borderRadius: BorderRadius.circular(10)),),)
 }
 
 // 排行推荐列表单个元素

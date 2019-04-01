@@ -2,20 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'dart:async';
 import 'package:demo/unify.dart';
+import 'package:demo/testDatas.dart';
 
 // 探索页Banner
 class RecommendBanner extends StatefulWidget{
 
-  final List<Map> specialColumns;
-  RecommendBanner(this.specialColumns);
-
   @override
-  State<StatefulWidget> createState() => _RecommendBanner(specialColumns);
+  State<StatefulWidget> createState() => _RecommendBanner();
 }
 class _RecommendBanner extends State<RecommendBanner>{
   
-  final List<Map> specialColumns;
-  _RecommendBanner(this.specialColumns);
   Timer bannerChanger;
   int currentColumn;
   List<Widget> _columns;
@@ -32,10 +28,11 @@ class _RecommendBanner extends State<RecommendBanner>{
   @override
   void initState() {
     super.initState();
-    _columns = [createColumns(specialColumns[0]), createColumns(specialColumns[1])];
+    List<Map> receiveColumns = _fakeRequest();
+    _columns = [createColumns(receiveColumns[0]), createColumns(receiveColumns[1])];
     bannerChanger = Timer.periodic(Duration(seconds: 3), (t){
       currentColumn = currentColumn==0?1:0;
-      loadColumns(currentColumn); print('Banner Change to '+specialColumns[currentColumn]['column']);
+      loadColumns(currentColumn); //print('Banner Change to '+forBanners[currentColumn]['column']);
     });
   }
 
@@ -49,6 +46,10 @@ class _RecommendBanner extends State<RecommendBanner>{
     setState(() {
       rightContent = _columns[index];
     });
+  }
+
+  List<Map> _fakeRequest(){
+    return forBanners;
   }
 
   Widget createColumns(Map currentColumn){
