@@ -49,12 +49,12 @@ class _DiscoverPage extends State<DiscoverPage>{
             elevation: 0,
             title: Text(
               'DISCOVER',
-              style: TextStyle(color: Colors.black, fontSize: Unify.px(40), fontWeight: FontWeight.bold),
+              style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(40), fontWeight: FontWeight.bold),
             ),
             actions: <Widget>[
               IconButton(
                 padding: EdgeInsets.all(0),
-                color: Colors.black,
+                color: Theme.of(context).accentColor,
                 iconSize: Unify.px(40),
                 icon: Icon(Icons.person),
                 onPressed: (){

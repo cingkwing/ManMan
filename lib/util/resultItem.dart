@@ -25,7 +25,7 @@ class ResultItem extends StatelessWidget{
             child: RichText(
               text: TextSpan(
                 text: _comic['title']+'\n',
-                style: TextStyle(color: Colors.black, fontSize: Unify.px(25)),
+                style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25)),
                 children: <TextSpan>[
                   TextSpan(text: _comic['brief'], style: TextStyle(fontSize: Unify.px(15)))
                 ]

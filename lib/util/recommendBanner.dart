@@ -13,11 +13,12 @@ class RecommendBanner extends StatefulWidget{
 class _RecommendBanner extends State<RecommendBanner>{
   
   Timer bannerChanger;
+  static Color theColor = Colors.grey;
   int currentColumn;
   List<Widget> _columns;
   Widget rightContent = Container(
     height: Unify.px(460),
-    child: SpinKitHourGlass(color: Colors.black, size: 30, duration: Duration(milliseconds: 2500),),
+    child: SpinKitHourGlass(color: theColor, size: 30, duration: Duration(milliseconds: 2500))
   );
 
   @override
@@ -42,8 +43,10 @@ class _RecommendBanner extends State<RecommendBanner>{
     bannerChanger.cancel();
   }
 
+  // 更换栏目函数
   void loadColumns(index){
     setState(() {
+      theColor = Theme.of(context).accentColor;
       rightContent = _columns[index];
     });
   }
@@ -80,7 +83,7 @@ class _RecommendBanner extends State<RecommendBanner>{
                   children: <TextSpan>[
                     TextSpan(
                       text: currentColumn['comic']['brief'],
-                      style: TextStyle(color: Colors.black)
+                      style: TextStyle(color: theColor),
                     ),
                   ]
                 ),

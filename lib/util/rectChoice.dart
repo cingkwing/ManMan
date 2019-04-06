@@ -16,7 +16,6 @@ class RectChoice extends StatelessWidget{
       child: Container(
         width: Unify.px(215),
         height: Unify.px(250),
-        // decoration: BoxDecoration(border: Border.all(color: Colors.black, width: Unify.px(1))),
         child: Column(
           children: <Widget>[
             
@@ -27,7 +26,7 @@ class RectChoice extends StatelessWidget{
               padding: EdgeInsets.only(left: Unify.px(15)),
               child: Text(
                 details['title'],
-                style: TextStyle(color: Colors.black54, fontSize: Unify.px(25), fontWeight: FontWeight.bold),
+                style: TextStyle(color: Theme.of(context).primaryColorLight, fontSize: Unify.px(25), fontWeight: FontWeight.bold),
               ),
             ),
             
@@ -37,10 +36,12 @@ class RectChoice extends StatelessWidget{
               width: Unify.px(215),
               height: Unify.px(195),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(Unify.px(15))
               ),
-              child: Center(child: details['icon']),
+              child: Center(
+                child: Icon(details['icon'], size: Unify.px(40), color: Theme.of(context).accentColor)
+              ),
             ),
 
           ],

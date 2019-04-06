@@ -3,7 +3,6 @@ import 'unify.dart';
 import 'package:demo/util/attribute.dart';
 import 'testDatas.dart';
 
-// TODO：理清数据格式，组件化各条信息
 class AccountPage extends StatelessWidget{
 
   List<Map> _fakeRequest(){
@@ -14,13 +13,12 @@ class AccountPage extends StatelessWidget{
   Widget build(BuildContext context){
     List<Map> _attrs = _fakeRequest();
     return Scaffold(
-      backgroundColor: Colors.grey[100],
 
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.all(Unify.px(5)),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Theme.of(context).accentColor),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -40,7 +38,7 @@ class AccountPage extends StatelessWidget{
                 alignment: Alignment.topLeft,
                 child: Text(
                   '账号信息',
-                  style: TextStyle(fontSize: Unify.px(35)),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(35)),
                 ),
               ),
               
@@ -54,7 +52,7 @@ class AccountPage extends StatelessWidget{
                   children: <Widget>[
                     Container(
                       height: Unify.px(120),
-                      child: Text('头像', style: TextStyle(fontSize: Unify.px(25), fontStyle: FontStyle.italic),)
+                      child: Text('头像', style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25), fontStyle: FontStyle.italic),)
                     ),
                     GestureDetector(
                       onTap: (){
@@ -80,9 +78,9 @@ class AccountPage extends StatelessWidget{
                 width: Unify.px(360),
                 height: Unify.px(60),
                 margin: EdgeInsets.fromLTRB(Unify.px(30), Unify.px(50), Unify.px(15), 0),
-                decoration: BoxDecoration(color: Colors.white70 ,borderRadius: BorderRadius.circular(Unify.px(15))),
+                decoration: BoxDecoration(color: Theme.of(context).primaryColor, borderRadius: BorderRadius.circular(Unify.px(15))),
                 child: FlatButton(
-                  child: Text('退出登录', style: TextStyle(fontSize: Unify.px(25))),
+                  child: Text('退出登录', style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25))),
                   onPressed: (){
                     Navigator.pushReplacementNamed(context, '/loginPage');
                   },

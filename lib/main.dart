@@ -19,33 +19,33 @@ void main() async{
   runApp(MMapp(await getTheme()));
 }
 
-Future<int> getTheme() async{
+Future<String> getTheme() async{
   SharedPreferences sp = await SharedPreferences.getInstance();
-  int temp = sp.getInt('themeIndex');
+  String temp = sp.getString('theme');
   if(temp != null){
     return temp;
   } else{
-    return 0;
+    return 'Light';
   }
 }
 
 // 漫漫App
 class MMapp extends StatefulWidget{
-  final int themeIndex;
-  MMapp(this.themeIndex);
+  final String theme;
+  MMapp(this.theme);
   @override
-  State<MMapp> createState()=>_MMapp(this.themeIndex);
+  State<MMapp> createState()=>_MMapp(this.theme);
 }
 class _MMapp extends State<MMapp>{
   
-  final int themeIndex;
-  _MMapp(this.themeIndex);
-  static int _themeIndex;
+  final String theme;
+  _MMapp(this.theme);
+  static String _theme;
 
   @override
   void initState(){
     super.initState();
-    _themeIndex = themeIndex;
+    _theme = theme;
   }
 
   @override
@@ -55,22 +55,23 @@ class _MMapp extends State<MMapp>{
 
   changeTheme() async{
     SharedPreferences sp = await SharedPreferences.getInstance();
-    int temp = sp.getInt('themeIndex')==0?1:0;
-    sp.setInt('themeIndex', temp);
+    String temp = sp.getString('theme')=='Light'?'Dark':'Light';
+    sp.setString('theme', temp);
     setState(() {
-      _themeIndex = temp;
+      _theme = temp;
     });
+    print('Theme has changed to $temp!');
   }
 
   @override
   Widget build(BuildContext context){
     return DynamicTheme(
-      theme: _themeIndex,
+      theme: _theme,
       changeTheme: changeTheme,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: '漫漫',
-        theme: DynamicTheme.themes[_themeIndex],
+        theme: DynamicTheme.themes[_theme],
         home: Scaffold(
           body: HomePage(),
         ),
@@ -110,7 +111,6 @@ class _HomePage extends State<HomePage> {
   @override
   Widget build(BuildContext context){
     return Container(
-      // color: Colors.grey[100],
       padding: EdgeInsets.all(Unify.px(10)),
       child: PageView.builder(
         controller: homePageController,

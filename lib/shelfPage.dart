@@ -18,12 +18,12 @@ class ShelfPage extends StatelessWidget{
             elevation: 0,
             title: Text(
               'READING',
-              style: TextStyle(color: Colors.black, fontSize: Unify.px(40), fontWeight: FontWeight.bold),
+              style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(40), fontWeight: FontWeight.bold),
             ),
             actions: <Widget>[
               IconButton(
                 padding: EdgeInsets.all(0),
-                color: Colors.black,
+                color: Theme.of(context).accentColor,
                 iconSize: Unify.px(40),
                 icon: Icon(Icons.person),
                 onPressed: (){
@@ -38,8 +38,7 @@ class ShelfPage extends StatelessWidget{
 
       // 
       body: Container(
-        // decoration: BoxDecoration(border: Border.all(color: Colors.black, width: 1)),
-        height: Unify.px(660),
+        height: Unify.px(690),
         margin: EdgeInsets.fromLTRB(Unify.px(15), Unify.px(80), Unify.px(15), 0),
         child: ShelfList(lastReading, forShelf),
       ),

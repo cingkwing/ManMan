@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'unify.dart';
+import 'util/settingsChoice.dart';
 // TODO: 如何组件化各个选项，是个问题.
 
 class SettingsPage extends StatefulWidget{
@@ -24,17 +25,23 @@ class _SettingsPage extends State<SettingsPage>{
     {'first': '反馈', 'second': Icon(Icons.chevron_right)},
     {'first': '关于', 'second': Icon(Icons.chevron_right)},
   ];
+  List<Widget> settingChoices = [
+    SettingChoice(
+      '风格',
+      Text('Light', style: TextStyle(color: Colors.black38, fontSize: Unify.px(20))),
+      (){print('风格');}
+    ),
+  ];
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[100],
 
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.all(Unify.px(5)),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Theme.of(context).accentColor),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -55,39 +62,12 @@ class _SettingsPage extends State<SettingsPage>{
                 alignment: Alignment.topLeft,
                 child: Text(
                   '通用设置',
-                  style: TextStyle(fontSize: Unify.px(35)),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(35)),
                 ),
               ),
 
               // 选项
-              Container(
-                height: Unify.px(500),
-                margin: EdgeInsets.all(Unify.px(20)),
-                child: ListView.builder(
-                  itemCount: testItems.length,
-                  itemExtent: Unify.px(90),
-                  itemBuilder: (context, index){
-                    return Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.only(left: Unify.px(20)),
-                          child: Text(
-                            testItems[index]['first'],
-                            style: TextStyle(fontSize: Unify.px(25)),
-                          ),
-                        ),
-                        Container(
-                          width: Unify.px(80),
-                          alignment: Alignment.center,
-                          padding: EdgeInsets.only(right: Unify.px(20)),
-                          child: testItems[index]['second'],
-                        ),
-                      ],
-                    );
-                  },
-                ),
-              )
+              ThemeSwitch()
 
             ],
           )

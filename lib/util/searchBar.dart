@@ -18,8 +18,7 @@ class SearchBar extends StatelessWidget{
           margin: EdgeInsets.fromLTRB(Unify.px(15), Unify.px(15), Unify.px(15), Unify.px(10)),
           padding: EdgeInsets.only(left: Unify.px(10)),
           decoration: BoxDecoration(
-            // border: Border.all(color: Colors.grey, width: Unify.px(1)),
-            color: Colors.white70,
+            color: Theme.of(context).primaryColorDark,
             borderRadius: BorderRadius.circular(Unify.px(25))
           ),
           child: Icon(Icons.search),

@@ -9,13 +9,12 @@ class WalletPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[100],
 
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.all(Unify.px(5)),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Theme.of(context).accentColor),
             backgroundColor: Colors.transparent,
             elevation: 0,
             actions: <Widget>[
@@ -47,7 +46,7 @@ class WalletPage extends StatelessWidget{
                 alignment: Alignment.topLeft,
                 child: Text(
                   '漫币余额',
-                  style: TextStyle(fontSize: Unify.px(35)),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(35)),
                 ),
               ),
 
@@ -57,13 +56,13 @@ class WalletPage extends StatelessWidget{
                 height: Unify.px(180),
                 margin: EdgeInsets.only(top: Unify.px(20)),
                 decoration: BoxDecoration(
-                  color: Colors.white70,
+                  color: Theme.of(context).primaryColor,
                   borderRadius: BorderRadius.circular(Unify.px(10))
                 ),
                 child: Center(
                   child: Text(
                     testBalance.toString(),
-                    style: TextStyle(fontSize: Unify.px(49)),
+                    style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(49)),
                   ),
                 ),
               )

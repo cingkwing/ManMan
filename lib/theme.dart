@@ -2,19 +2,27 @@ import 'package:flutter/material.dart';
 
 class DynamicTheme extends InheritedWidget{
 
-  static List<ThemeData> themes = [
+  static Map themes = {
     // Light主题
-    ThemeData(
+    'Light': ThemeData(
       primaryColor: Colors.white,
+      accentColor: Colors.black,
+      canvasColor: Colors.white70,
+      primaryColorDark: Colors.white70,
+      primaryColorLight: Colors.grey,
       scaffoldBackgroundColor: Colors.grey[100],
     ),
     // Dark主题
-    ThemeData(
+    'Dark': ThemeData(
       primaryColor: Colors.black,
-      scaffoldBackgroundColor: Colors.grey[100],
+      accentColor: Colors.white,
+      canvasColor: Colors.black,
+      primaryColorDark: Colors.white,
+      primaryColorLight: Colors.grey,
+      scaffoldBackgroundColor: Color.fromRGBO(50, 50, 50, 1.0),
     ),
-  ];
-  final int theme;
+  };
+  final String theme;
   final Function() changeTheme;
 
   DynamicTheme({

@@ -10,13 +10,12 @@ class RecordPage extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[100],
 
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.all(Unify.px(5)),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Theme.of(context).accentColor),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -37,14 +36,13 @@ class RecordPage extends StatelessWidget{
                 alignment: Alignment.topLeft,
                 child: Text(
                   '个人动态',
-                  style: TextStyle(fontSize: Unify.px(35)),
+                  style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(35)),
                 ),
               ),
 
               // 动态
               Container(
                 height: Unify.px(1000),
-                // decoration: BoxDecoration(border: Border.all(color: Colors.black, width: Unify.px(1))),
                 padding: EdgeInsets.all(Unify.px(20)),
                 child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
@@ -54,7 +52,7 @@ class RecordPage extends StatelessWidget{
                     return Container(
                       margin: EdgeInsets.only(bottom: Unify.px(15)),
                       decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(Unify.px(10))
                       ),
                       child: Column(
@@ -63,7 +61,7 @@ class RecordPage extends StatelessWidget{
                             height: Unify.px(120),
                             alignment: Alignment.centerLeft,
                             padding: EdgeInsets.only(left: Unify.px(30)),
-                            child: Text(records[index]['content']),
+                            child: Text(records[index]['content'], style: TextStyle(color: Theme.of(context).accentColor)),
                           ),
                           Container(
                             height: Unify.px(25),
@@ -71,7 +69,7 @@ class RecordPage extends StatelessWidget{
                             padding: EdgeInsets.only(right: Unify.px(25), bottom: Unify.px(10)),
                             child: Text(
                               records[index]['time'],
-                              style: TextStyle(color: Colors.black38, fontSize: Unify.px(15))
+                              style: TextStyle(color: Theme.of(context).primaryColorLight, fontSize: Unify.px(15))
                             ),
                           ),
                         ],

@@ -31,20 +31,21 @@ class Attribute extends StatelessWidget{
           Container(
             alignment: Alignment.topLeft,
             height: Unify.px(30),
-            child: Text(title, style: TextStyle(fontSize: Unify.px(25), fontStyle: FontStyle.italic),),
+            child: Text(title, style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25), fontStyle: FontStyle.italic),),
           ),
           Padding(
             padding: EdgeInsets.only(top: Unify.px(10)),
             child: Container(
               width: Unify.px(360),
               height: Unify.px(60),
-              decoration: BoxDecoration(color: Colors.white70 ,borderRadius: BorderRadius.circular(Unify.px(15))),
+              decoration: BoxDecoration(color: Theme.of(context).primaryColor ,borderRadius: BorderRadius.circular(Unify.px(15))),
               child: TextField(
                 style: TextStyle(fontSize: Unify.px(20)),
                 inputFormatters: format,
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: value,
+                  hintStyle: TextStyle(color: Theme.of(context).accentColor),
                   contentPadding: EdgeInsets.all(Unify.px(20)),
                   disabledBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,

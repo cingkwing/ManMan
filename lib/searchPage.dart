@@ -18,18 +18,17 @@ class _SearchPage extends State<SearchPage>{
   final List<Map> results;
   _SearchPage(this.kinds, this.results);
   static List<Map> showResults = [];
-  static List<Color> kindsColor = List.generate(20, (i)=>Colors.black38);
+  static List<Color> kindsColor = List.generate(20, (i)=>Colors.grey);
 
   @override
   Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.grey[100],
 
       appBar: PreferredSize(
         child: Padding(
           padding: EdgeInsets.all(Unify.px(5)),
           child: AppBar(
-            iconTheme: IconThemeData(color: Colors.black),
+            iconTheme: IconThemeData(color: Theme.of(context).accentColor),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -47,14 +46,14 @@ class _SearchPage extends State<SearchPage>{
               Padding(
                 padding: EdgeInsets.all(Unify.px(15)),
                 child: Material(
-                  color: Colors.white70,
+                  color: Theme.of(context).primaryColorDark,
                   borderRadius: BorderRadius.circular(Unify.px(20)),
                   child: TextField(
                     style: TextStyle(fontSize: Unify.px(20)),
                     textAlign: TextAlign.center,
                     decoration: InputDecoration(
                       hintText: '搜索',
-                      hintStyle: TextStyle(color: Colors.black12),
+                      hintStyle: TextStyle(color: Theme.of(context).primaryColorLight),
                       contentPadding: EdgeInsets.all(Unify.px(15)),
                       disabledBorder: InputBorder.none,
                       enabledBorder: InputBorder.none,
@@ -78,7 +77,7 @@ class _SearchPage extends State<SearchPage>{
                   children: <Widget>[
                     Container(
                       height: Unify.px(50),
-                      child: Text('类别：', style: TextStyle(color: Colors.black38, fontSize: Unify.px(25)))
+                      child: Text('类别：', style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25)))
                     ),
                     Container(
                       width: Unify.px(350),
@@ -93,7 +92,8 @@ class _SearchPage extends State<SearchPage>{
                             margin: EdgeInsets.only(left: Unify.px(5), right: Unify.px(5)),
                             child: GestureDetector(
                               onTap: (){
-                                onKindTap(index);
+
+                                onKindTap(index, context);
                               },
                               child: Container(
                                 child: Text(
@@ -137,9 +137,9 @@ class _SearchPage extends State<SearchPage>{
     });
   }
 
-  void onKindTap(index){
+  void onKindTap(int index, BuildContext context){
     setState(() {
-      kindsColor[index] = kindsColor[index]==Colors.black38?Colors.black:Colors.black38;
+      kindsColor[index] = kindsColor[index]==Colors.grey?Theme.of(context).accentColor:Colors.grey;
     });
   }
 }

@@ -42,8 +42,8 @@ class _RankListState extends State<RankList>{
         child: SpinKitWave(
           size: 20,
           itemBuilder: (context, i)=>DecoratedBox(decoration: BoxDecoration(
-            color: i.isEven?Colors.white:Colors.transparent,
-            border: Border.all(color: i.isEven?Colors.black:Colors.transparent, width: Unify.px(1)),
+            color: i.isEven?Colors.grey:Colors.transparent,
+            border: Border.all(color: i.isEven?Colors.grey:Colors.transparent, width: Unify.px(1)),
             borderRadius: BorderRadius.circular(10)
           ),),
         ),
@@ -115,7 +115,7 @@ class RankListItem extends StatelessWidget{
                 children: <Widget>[
                   Text(
                     title,
-                    style: TextStyle(fontSize: Unify.px(30)),
+                    style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(30)),
                   ),
                   Icon(
                     Icons.keyboard_arrow_right,
@@ -145,15 +145,15 @@ class RankListItem extends StatelessWidget{
                       child: RichText(
                         text: TextSpan(
                           text: comic['title']+'\n',
-                          style: TextStyle(color: Colors.black, fontSize: Unify.px(25), fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25), fontWeight: FontWeight.bold),
                           children: <TextSpan>[
                             TextSpan(
                               text: '作者: '+comic['author']+'\n\n',
-                              style: TextStyle(color: Colors.blue, fontSize: Unify.px(15), fontStyle: FontStyle.italic)
+                              style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(15), fontStyle: FontStyle.italic)
                             ),
                             TextSpan(
                               text: comic['summary']+'\n',
-                              style: TextStyle(color: Colors.black54, fontSize: Unify.px(20))
+                              style: TextStyle(color: Theme.of(context).primaryColorLight, fontSize: Unify.px(20))
                             ),
                           ]
                         )

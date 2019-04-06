@@ -1,36 +1,28 @@
-        Container(
-      // margin: EdgeInsets.only(top: 15),
-      decoration: BoxDecoration(
-        // border: Border.all(color: Colors.black, width: 1),
-        borderRadius: BorderRadius.circular(5)
-      ),
-      child: Column(
-        children: <Widget>[
-          ClipRRect(
-            child: Image(image: AssetImage('images/海贼王.jpg'), fit: BoxFit.cover,),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 5),
-            alignment: Alignment.centerLeft,
-            child: RichText(
-              key: Key('名称'),
-              text: TextSpan(
-                text: '#倾情选荐\n',
-                style: TextStyle(fontSize: 22, color: Colors.blue, fontWeight: FontWeight.bold),
-                children: <TextSpan>[
-                  TextSpan(
-                    text: '海贼王\n',
-                    style: TextStyle(fontSize: 18, color: Colors.black87)
+              Container(
+                height: Unify.px(500),
+                margin: EdgeInsets.all(Unify.px(20)),
+                child: GestureDetector(
+                  onTap: ()=>DynamicTheme.of(context).changeTheme(),
+                  child: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Container(
+                          width: Unify.px(340),
+                          padding: EdgeInsets.only(left: Unify.px(20)),
+                          child: Text(
+                            '风格',
+                            style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(25)),
+                          ),
+                        ),
+                        Container(
+                          width: Unify.px(80),
+                          alignment: Alignment.center,
+                          padding: EdgeInsets.only(right: Unify.px(20)),
+                          child: Text('Light', style: TextStyle(color: Theme.of(context).accentColor, fontSize: Unify.px(20))),
+                        ),
+                      ],
+                    ),
                   ),
-                  TextSpan(
-                    text: '围绕着"大秘宝one piece"而展开的海洋冒险故事现在开始!',
-                    style: TextStyle(fontSize: 15, color: Colors.black54),
-                  )
-                ]
-              ),
-           )
-          )
-        ],
-      ),
-    );
+                )
+              )
