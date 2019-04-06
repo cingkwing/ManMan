@@ -24,6 +24,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   flutter_spinkit: ^3.1.0
   shared_preferences: ^0.5.1+2
+  url_launcher: ^5.0.2
 
 dev_dependencies:
   flutter_test:
@@ -49,6 +50,7 @@ flutter:
     - images/defaultW.jpg
     - images/defaultH.jpg
     - images/circularUser.png
+    - images/logo.png
     - images/w/古惑仔系列20龙头之争.jpg
     - images/w/海贼王.jpg
     - images/h/万古剑神.jpg

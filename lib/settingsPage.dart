@@ -51,6 +51,7 @@ class _SettingsPage extends State<SettingsPage>{
               // 标题栏
               Container(
                 height: Unify.px(75),
+                margin: EdgeInsets.only(bottom: Unify.px(20)),
                 padding: EdgeInsets.all(Unify.px(20)),
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -60,7 +61,10 @@ class _SettingsPage extends State<SettingsPage>{
               ),
 
               // 选项
-              ThemeSwitch()
+              ThemeSwitch(),
+              OperateChoice('清理缓存'),
+              WithInputChoice('反馈', '衷心感谢你的反馈！\n我们会做到更好!', '提交'),
+              AboutChoice('关于', 'https://github.com/cingkwing/ManMan'),
 
             ],
           )
