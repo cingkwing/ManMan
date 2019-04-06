@@ -25,13 +25,6 @@ class _SettingsPage extends State<SettingsPage>{
     {'first': '反馈', 'second': Icon(Icons.chevron_right)},
     {'first': '关于', 'second': Icon(Icons.chevron_right)},
   ];
-  List<Widget> settingChoices = [
-    SettingChoice(
-      '风格',
-      Text('Light', style: TextStyle(color: Colors.black38, fontSize: Unify.px(20))),
-      (){print('风格');}
-    ),
-  ];
 
   @override
   Widget build(BuildContext context){
